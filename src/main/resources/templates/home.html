@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+<h1>fffffffffffffffffff</h1>
+<div th:switch="${pets}">
+    <h2 th:case="null">No pets yet!</h2>
+    <div th:case="*">
+        <h2>Pets</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Pet</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pet : ${pets}">
+                <td th:text="${pet.name}"></td>
+                <td th:text="${pet.type}"></td>
+                <td><a th:href="@{/edit/{id}(id=${pet.id})}">Edit</a></td>
+                <td><a th:href="@{/delete/{id}(id=${pet.id})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/form">Add a new pet</a></p>
+</div>
+</body>
+</html>
